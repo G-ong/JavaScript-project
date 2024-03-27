@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./modal.css" />
+    <title>Modal</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 遮罩层 -->
+      <div class="mask"></div>
+      <!-- 按钮 -->
+      <button class="open-btn">Open Modal</button>
+      <!-- 弹出层 -->
+      <div class="modal-container">
+        <!-- 头部：标题、副标题、关闭icon -->
+        <div class="modal-header">
+          <div>
+            <h3>Basic Modal</h3>
+            <p>xxxxxxxxxxxxxxxxxxxxxxxx</p>
+          </div>
+          <span class="modal-close">×</span>
+        </div>
+        <!-- 中间内容部分 -->
+        <div class="modal-content">
+          <ul>
+            <li>Some contents ...</li>
+            <li>Some contents ...</li>
+            <li>Some contents ...</li>
+            <li>Some contents ...</li>
+            <li>Some contents ...</li>
+            <li>Some contents ...</li>
+            <li>Some contents ...</li>
+            <li>Some contents ...</li>
+            <li>Some contents ...</li>
+            <li>Some contents ...</li>
+          </ul>
+        </div>
+        <!-- 底部：取消、确定按钮 -->
+        <div class="modal-btns">
+          <button class="cancel-btn">取消</button>
+          <button class="certain-btn">确定</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const openBtn = document.querySelector(".open-btn");
+      const modal = document.querySelector(".modal-container");
+      const mask = document.querySelector(".mask");
+      const cancelBtn = document.querySelector(".cancel-btn");
+      const certainBtn = document.querySelector(".certain-btn");
+      const modalClose = document.querySelector(".modal-close");
+      //   点击按钮进行modal弹窗展示
+      openBtn.onclick = () => {
+        modal.style.display = "block";
+        mask.style.display = "block";
+      };
+      //   点击按钮关闭modal弹窗
+      const closeModal = () => {
+        modal.style.display = "none";
+        mask.style.display = "none";
+      };
+      cancelBtn.onclick =
+        modalClose.onclick =
+        certainBtn.onclick =
+          () => {
+            closeModal();
+          };
+      //   cancelBtn.onclick = () => {
+      //     closeModal();
+      //   };
+      //   modalClose.onclick = () => {
+      //     closeModal();
+      //   };
+      //   certainBtn.onclick = () => {
+      //     closeModal();
+      //   };
+    </script>
+  </body>
+</html>

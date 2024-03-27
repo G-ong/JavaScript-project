@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cattttt</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        height: 3600px;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        list-style-type: none;
+        li {
+          width: 500px;
+          height: 600px;
+          display: flex;
+          flex-direction: column;
+          img {
+            width: 500px;
+            height: 500px;
+          }
+        }
+      }
+      .navigation {
+        position: fixed;
+        top: 100px;
+        right: 200px;
+        list-style-type: none;
+        li {
+          width: 150px;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          border: solid 2px pink;
+          a {
+            display: block;
+            width: 150px;
+            height: 40px;
+            text-decoration: none;
+            color: pink;
+          }
+        }
+        li + li {
+          border-top: none; /* 移除上边框 */
+        }
+      }
+      .active {
+        background-color: pink;
+        a {
+          color: white !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 主体内容部分 -->
+      <ul class="content">
+        <li id="cat-1">
+          <h2>cat111</h2>
+          <img src="./assets/cat-1.jpg" alt="" />
+        </li>
+        <li id="cat-2">
+          <h2>cat222</h2>
+          <img src="./assets/cat-2.jpg" alt="" />
+        </li>
+        <li id="cat-3">
+          <h2>cat333</h2>
+          <img src="./assets/cat-3.jpg" alt="" />
+        </li>
+        <li id="cat-4">
+          <h2>cat444</h2>
+          <img src="./assets/cat-4.jpg" alt="" />
+        </li>
+        <li id="cat-5">
+          <h2>cat555</h2>
+          <img src="./assets/cat-5.jpg" alt="" />
+        </li>
+      </ul>
+      <!-- 导航部分 -->
+      <ul class="navigation">
+        <li class="active"><a href="#cat-1">cat111</a></li>
+        <li><a href="#cat-2">cat222</a></li>
+        <li><a href="#cat-3">cat333</a></li>
+        <li><a href="#cat-4">cat444</a></li>
+        <li><a href="#cat-5">cat555</a></li>
+      </ul>
+    </div>
+    <script>
+      let lis = document.querySelectorAll(".navigation li");
+      lis.forEach((li) => {
+        li.onclick = () => {
+          lis.forEach((li) => {
+            li.classList.remove("active");
+          });
+          li.classList.add("active");
+          window.scrollTo(0, 0);
+        };
+      });
+      window.onscroll = () => {
+        const i = parseInt(document.documentElement.scrollTop / 600);
+        lis.forEach((li) => {
+          li.classList.remove("active");
+        });
+        lis[i].classList.add("active");
+      };
+
+      // if (
+      //   document.documentElement.scrollTop / 600 >= 0 &&
+      //   document.documentElement.scrollTop / 600 <= 1
+      // ) {
+      //   lis.forEach((li) => {
+      //     li.classList.remove("active");
+      //   });
+      //   lis[0].classList.add("active");
+      //   // console.log("cat111");
+      // }
+      // if (
+      //   document.documentElement.scrollTop / 600 >= 1 &&
+      //   document.documentElement.scrollTop / 600 < 2
+      // ) {
+      //   lis.forEach((li) => {
+      //     li.classList.remove("active");
+      //   });
+      //   lis[1].classList.add("active");
+      //   //   console.log("cat222");
+      // }
+      // if (
+      //   document.documentElement.scrollTop / 600 >= 2 &&
+      //   document.documentElement.scrollTop / 600 < 3
+      // ) {
+      //   lis.forEach((li) => {
+      //     li.classList.remove("active");
+      //   });
+      //   lis[2].classList.add("active");
+      //   //   console.log("cat333");
+      // }
+      // if (
+      //   document.documentElement.scrollTop / 600 >= 3 &&
+      //   document.documentElement.scrollTop / 600 < 4
+      // ) {
+      //   lis.forEach((li) => {
+      //     li.classList.remove("active");
+      //   });
+      //   lis[3].classList.add("active");
+      //   //   console.log("cat444");
+      // }
+      // if (
+      //   document.documentElement.scrollTop / 600 >= 4 &&
+      //   document.documentElement.scrollTop / 600 < 5
+      // ) {
+      //   lis.forEach((li) => {
+      //     li.classList.remove("active");
+      //   });
+      //   lis[4].classList.add("active");
+      //   //   console.log("cat555");
+      // }
+      //   获取页面滚动高度
+      //   window.addEventListener("scroll", function () {
+      //     console.log(document.documentElement.scrollTop);
+      //   });
+    </script>
+  </body>
+</html>

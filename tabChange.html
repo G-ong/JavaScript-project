@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tab页切换</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        margin-top: 100px;
+        text-align: center;
+        .tab-title {
+          display: flex;
+          justify-content: center;
+          button {
+            width: 150px;
+            height: 30px;
+            border: none;
+          }
+        }
+        .tab-content {
+          display: flex;
+          justify-content: center;
+          div {
+            display: none;
+            width: 300px;
+            height: 300px;
+            img {
+              width: 100%;
+            }
+          }
+        }
+        .tab-title-active {
+          background-color: #c0e5ff;
+        }
+        .tab-content-active {
+          display: block !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="tab-title">
+        <button class="tab-title-active">秋瞳</button>
+        <button>孙璟</button>
+      </div>
+      <div class="tab-content">
+        <div class="tab-content-active">
+          <img src="./assets/tab-2.webp" alt="" />
+        </div>
+        <div><img src="./assets/tab-1.webp" alt="" /></div>
+      </div>
+    </div>
+    <script>
+      const btns = document.querySelectorAll(".tab-title button");
+      const contents = document.querySelectorAll(".tab-content div");
+      /** methods1 */
+      for (let i = 0; i < btns.length; i++) {
+        btns[i].onclick = function () {
+          // 删除原来tab的active样式
+          document
+            .querySelector(".tab-title-active")
+            .classList.remove("tab-title-active");
+          document
+            .querySelector(".tab-content-active")
+            .classList.remove("tab-content-active");
+          // 添加新tab的active样式
+          this.classList.add("tab-title-active");
+          contents[i].classList.add("tab-content-active");
+        };
+      }
+      /** methods2 */
+      // for (let i = 0; i < btns.length; i++) {
+      //   btns[i].onclick = function () {
+      //     // 添加新tab的active样式
+      //     btns[i].classList.add("tab-title-active");
+      //     contents[i].classList.add("tab-content-active");
+      //     for (let j = 0; j < btns.length; j++) {
+      //       if (j !== i) {
+      //         // 删除除了点击到的tab的active样式
+      //         btns[j].classList.remove("tab-title-active");
+      //         contents[j].classList.remove("tab-content-active");
+      //       }
+      //     }
+      //   };
+      // }
+    </script>
+  </body>
+</html>
